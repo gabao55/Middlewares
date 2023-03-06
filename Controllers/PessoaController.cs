@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -32,7 +33,7 @@ namespace Middlewares.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] string value)
         {
-            return Ok($"Criou {value}");
+            return StatusCode((int)HttpStatusCode.Created, $"Criou {value}");
         }
 
         // PUT api/<PessoaController>/5
@@ -49,7 +50,7 @@ namespace Middlewares.Controllers
             if (id == 0)
                 return BadRequest();
 
-            return Ok($"Deletou valor com id {id}");
+            return StatusCode((int)HttpStatusCode.Accepted, $"Deletou valor com id {id}");
         }
     }
 }
